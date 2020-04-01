@@ -12,10 +12,8 @@ const imageCount = require('./controllers/imageCount');
 const db = knex ({
     client: 'pg',
     connection: {
-      host : 'postgresql-shaped-86870',
-      user : 'Alberto',
-      password : '',
-      database : 'smart-brain'
+      host : process.env.DATABASE_URL,
+      ssl: true
     }
 });
 
