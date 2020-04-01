@@ -1,7 +1,7 @@
 const handleRegister = (req, res, db, bcrypt) => {
     const {email, name, password} = req.body;
     if(!email || !name || !password){
-        return res.status(400).json('Missing information!')
+        return res.status(400).json('Missing information! Line 4 - Register.js')
     }
     const hash = bcrypt.hashSync(password);
        db.transaction(trx => {
@@ -27,7 +27,7 @@ const handleRegister = (req, res, db, bcrypt) => {
             .catch(trx.rollback)
        })
        
-        .catch(err => res.status(400).json('Unable to register'));
+        .catch(err => res.status(400).json('Unable to register Line 30 - Register.js'));
 }
 module.exports = {
     handleRegister
