@@ -1,8 +1,14 @@
 const Clarifai = require('clarifai');
 
 
+const aws = require('aws-sdk');
+
+let API = new aws.S3({
+  accessKeyId: process.env.API_KEY,
+});
+
 const app = new Clarifai.App({
- apiKey: '5b2b4f2bc8914225bc9b91dca6d931cc'
+ apiKey: API
 });
 
 const handleApiCall = (req, res) => {
