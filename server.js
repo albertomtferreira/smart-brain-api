@@ -31,13 +31,13 @@ const db = knex({
     connectionString: process.env.DATABASE_URL
   }
 });
-
+// ,`API ${DATABASE_URL}`
 const app = express();
 // ,`API ${s3.[0]}`
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> { res.send('it is running',`API ${DATABASE_URL}`)});
+app.get('/', (req, res)=> { res.send('it is running')});
 app.post('/signin', signin.handleSignin(db, bcryptNodeJs));
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcryptNodeJs)});
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)});
