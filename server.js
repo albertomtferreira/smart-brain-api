@@ -33,11 +33,11 @@ const db = knex({
 });
 
 const app = express();
-// ,`API ${API}`
+
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> { res.send('it is running')});
+app.get('/', (req, res)=> { res.send('it is running,`API ${s3.[0]}`')});
 app.post('/signin', signin.handleSignin(db, bcryptNodeJs));
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcryptNodeJs)});
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)});
