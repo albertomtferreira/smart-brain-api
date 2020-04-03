@@ -37,7 +37,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> {res.send(`it is running PORT: ${process.env.PORT} - db: ${process.env.DATABASE_URL}`)});
+app.get('/', (req, res)=> {res.send(`it is running PORT: ${process.env.PORT} - db: ${process.env.S3_KEY}`)});
 app.post('/signin', signin.handleSignin(db, bcryptNodeJs));
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcryptNodeJs)});
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)});
