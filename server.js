@@ -12,10 +12,17 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 // const API = process.env.API;
 
+// const aws = require('aws-sdk');
+
+// let API = new aws.API({
+//   accessKeyId: process.env.API_KEY
+// });
+
 const aws = require('aws-sdk');
 
-let API = new aws.API({
-  accessKeyId: process.env.API_KEY
+let s3 = new aws.S3({
+  accessKeyId: process.env.S3_KEY,
+  secretAccessKey: process.env.S3_SECRET
 });
 
 const db = knex({
@@ -26,11 +33,11 @@ const db = knex({
 });
 
 const app = express();
-
+// ,`API ${API}`
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> { res.send('it is running',`API ${API}`)});
+app.get('/', (req, res)=> { res.send('it is running')});
 app.post('/signin', signin.handleSignin(db, bcryptNodeJs));
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcryptNodeJs)});
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)});
