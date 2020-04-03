@@ -1,10 +1,6 @@
 const Clarifai = require('clarifai');
-// const bodyParser = require('body-parser');
-
-// app.use(bodyParser.json());
 
 
-//You must add your own API key here from Clarifai.
 const app = new Clarifai.App({
  apiKey: '5b2b4f2bc8914225bc9b91dca6d931cc'
 });
@@ -31,5 +27,5 @@ const handleImage = (req, res, db) => {
 
 module.exports = {
   handleImage,
-  handleApiCall
+  handleApiCall,
 }
