@@ -20,7 +20,7 @@ const image = require('./controllers/image');
 
 const aws = require('aws-sdk');
 
-let API = new aws.API({
+let API = new aws.S3({
   accessKeyId: process.env.API_KEY,
 });
 
