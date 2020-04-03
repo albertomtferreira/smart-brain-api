@@ -8,7 +8,7 @@ let API = new aws.S3({
 });
 
 const app = new Clarifai.App({
- apiKey: API
+ apiKey: process.env.API_KEY
 });
 
 const handleApiCall = (req, res) => {
