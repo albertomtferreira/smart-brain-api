@@ -1,5 +1,7 @@
 const Clarifai = require('clarifai');
+const bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
 
 
 //You must add your own API key here from Clarifai.
