@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcryptNodeJs = require('bcrypt-nodejs');
-//const bcrypt = require('bcrypt');
-//const saltRounds = 10;
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const cors = require('cors');
 const knex = require('knex');
 
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res)=> {res.send(`it is running`)});
 app.post('/signin', signin.handleSignin(db, bcryptNodeJs));
-app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcryptNodeJs)});
+app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt, saltRounds)});
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)});
 app.put('/image', (req, res) => { image.handleImage(req, res, db)});
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)});
