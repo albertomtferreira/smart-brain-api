@@ -20,9 +20,8 @@ const image = require('./controllers/image');
 
 const aws = require('aws-sdk');
 
-let s3 = new aws.S3({
+let API = new aws.API({
   accessKeyId: process.env.API_KEY,
-  secretAccessKey: process.env.S3_SECRET
 });
 
 const db = knex({
