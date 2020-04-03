@@ -12,12 +12,6 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 
-const aws = require('aws-sdk');
-
-let API = new aws.S3({
-  accessKeyId: process.env.API_KEY,
-});
-
 const db = knex({
   client: 'pg',
   connection: {
@@ -29,7 +23,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> {res.send(`it is running PORT: ${process.env.PORT} - db: ${process.env.API_KEY}`)});
+app.get('/', (req, res)=> {res.send(`it is running`)});
 app.post('/signin', signin.handleSignin(db, bcryptNodeJs));
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcryptNodeJs)});
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)});

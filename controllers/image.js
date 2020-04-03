@@ -1,6 +1,4 @@
 const Clarifai = require('clarifai');
-
-
 const aws = require('aws-sdk');
 
 let API = new aws.S3({
@@ -17,7 +15,7 @@ const handleApiCall = (req, res) => {
     .then(data => {
       res.json(data);
     })
-    .catch(err => res.status(400).json(`unable to work with API ${process.env.API_KEY}`))
+    .catch(err => res.status(400).json(`unable to work with API`))
 }
 
 const handleImage = (req, res, db) => {
