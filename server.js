@@ -37,7 +37,10 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> { res.send('it is running')});
+app.get('/', (req, res)=> { 
+  res.send('it is running');
+  console.log('it is running')
+});
 app.post('/signin', signin.handleSignin(db, bcryptNodeJs));
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcryptNodeJs)});
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)});
