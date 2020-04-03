@@ -21,7 +21,7 @@ const image = require('./controllers/image');
 const aws = require('aws-sdk');
 
 let s3 = new aws.S3({
-  accessKeyId: process.env.S3_KEY,
+  accessKeyId: process.env.API_KEY,
   secretAccessKey: process.env.S3_SECRET
 });
 
@@ -37,7 +37,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> {res.send(`it is running PORT: ${process.env.PORT} - db: ${process.env.S3_KEY}`)});
+app.get('/', (req, res)=> {res.send(`it is running PORT: ${process.env.PORT} - db: ${process.env.API_KEY}`)});
 app.post('/signin', signin.handleSignin(db, bcryptNodeJs));
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcryptNodeJs)});
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)});
