@@ -10,7 +10,14 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
-const API = process.env.API;
+// const API = process.env.API;
+
+const aws = require('aws-sdk');
+
+let API = new aws.API({
+  accessKeyId: process.env.API_KEY
+});
+
 const db = knex({
   client: 'pg',
   connection: {
